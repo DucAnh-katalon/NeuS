@@ -78,7 +78,7 @@ class Dataset:
         self.masks  = torch.from_numpy(self.masks_np.astype(np.float32)).cuda()   # [n_images, H, W, 3]
         self.intrinsics_all = torch.stack(self.intrinsics_all).to(self.device)   # [n_images, 4, 4]
         self.intrinsics_all_inv = torch.inverse(self.intrinsics_all)  # [n_images, 4, 4]
-        self.focal = self.intrinsics_all[0][0, 0]>
+        self.focal = self.intrinsics_all[0][0, 0]
         self.pose_all = torch.stack(self.pose_all).to(self.device)  # [n_images, 4, 4]
         self.H, self.W = self.images.shape[1], self.images.shape[2]
         self.image_pixels = self.H * self.W
